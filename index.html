@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryan J. Carbone — AI/ML Portfolio</title>
+    <style>
+        /* --- Base Styles --- */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+            /* --- Resume Section Styles --- */
+            .resume-block {
+                background: #fff;
+                border-radius: 14px;
+                box-shadow: 0 4px 18px rgba(44,62,80,0.07);
+                padding: 40px 32px 32px 32px;
+                margin: 60px auto 0 auto;
+                max-width: 900px;
+            }
+            .resume-block h3 {
+                font-size: 2rem;
+                color: #1a1a2e;
+                margin-bottom: 8px;
+            }
+            .resume-block p {
+                margin-bottom: 18px;
+                color: #444;
+            }
+            .resume-block h4 {
+                font-size: 1.3rem;
+                color: #e94560;
+                margin-top: 36px;
+                margin-bottom: 10px;
+                letter-spacing: 1px;
+            }
+            .resume-block strong {
+                display: inline-block;
+                font-size: 1.08rem;
+                color: #16213e;
+                margin-top: 18px;
+                margin-bottom: 2px;
+            }
+            .resume-block em {
+                color: #555;
+                font-size: 1rem;
+                margin-bottom: 2px;
+                display: block;
+            }
+            .resume-block ul {
+                margin: 10px 0 24px 24px;
+                padding-left: 18px;
+            }
+            .resume-block ul li {
+                margin-bottom: 10px;
+                line-height: 1.6;
+            }
+            .resume-download {
+                display: inline-block;
+                margin-top: 18px;
+                margin-bottom: 30px;
+                padding: 10px 28px;
+                background: #e94560;
+                color: #fff;
+                border-radius: 24px;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 1.08rem;
+                box-shadow: 0 2px 8px rgba(233,69,96,0.08);
+                transition: background 0.2s;
+            }
+            .resume-download:hover {
+                background: #b92d4b;
+            }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            color: #2d2d2d; 
+            background: #f9f9f9; 
+            line-height: 1.6;
+        }
+
+        /* --- Header / Navigation --- */
+        header {
+            background: #1a1a2e;
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        header h1 { 
+            font-size: 1.5rem; 
+            letter-spacing: 2px; 
+            color: #e94560; 
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover { 
+            color: #e94560; 
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+        }
+
+        .hero h2 { 
+            font-size: 3.5rem; 
+            margin-bottom: 16px; 
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #a8b2d8;
+            max-width: 700px;
+            margin: 0 auto 32px;
+            letter-spacing: 1px;
+        }
+
+        .hero .cta {
+            background: #e94560;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .hero .cta:hover { 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(233, 69, 96, 0.4);
+        }
+
+        /* --- General Section Layout --- */
+        section { 
+            padding: 100px 20px; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+        }
+
+        section h2 { 
+            font-size: 2.2rem; 
+            margin-bottom: 8px; 
+            color: #1a1a2e; 
+        }
+
+        .divider { 
+            width: 60px; 
+            height: 4px; 
+            background: #e94560; 
+            margin-bottom: 40px; 
+            border-radius: 2px; 
+        }
+
+        /* --- About Me --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: #16213e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #e94560;
+            border: 4px solid #e94560;
+            margin: 0 auto;
+        }
+
+        .about-text p { 
+            margin-bottom: 20px;
+            color: #444; 
+            font-size: 1.1rem; 
+        }
+
+        /* --- Skills Grid --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover { 
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+            border-color: #e94560;
+        }
+
+        .skill-card .icon { 
+            font-size: 2.5rem; 
+            margin-bottom: 15px; 
+            display: block;
+        }
+
+        .skill-card h3 { 
+            font-size: 1.1rem; 
+            color: #1a1a2e; 
+            margin-bottom: 10px; 
+        }
+
+        .skill-card p { 
+            font-size: 0.9rem; 
+            color: #666; 
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #1a1a2e;
+            color: #a8b2d8;
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 50px;
+        }
+
+        footer a { 
+            color: #e94560; 
+            text-decoration: none; 
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; }
+            nav a { margin: 0 10px; }
+            .hero h2 { font-size: 2.5rem; }
+            .about-grid { grid-template-columns: 1fr; text-align: center; }
+            .avatar { margin-bottom: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>RYAN J. CARBONE</h1>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+        <!-- Added Resume link to navigation -->
+        <nav>
+            <a href="#resume">Resume</a>
+        </nav>
+
+<div class="hero" id="home">
+    <h2>Welcome to My Portfolio</h2>
+    <p>AI/ML Practitioner &bull; Data Scientist &bull; Problem Solver</p>
+    <a href="#about" class="cta">Learn More About Me</a>
+</div>
+
+<section id="about">
+    <h2>About Me</h2>
+    <div class="divider"></div>
+    <div class="about-grid">
+        <div class="avatar">&#128100;</div>
+        <div class="about-text">
+            <p>I'm an AI/ML practitioner with a passion for transforming raw data into meaningful insights. Currently enrolled in the TripleTen AI/ML program, I'm building expertise across the full data science and machine learning pipeline &mdash; from data wrangling and exploratory analysis to model deployment and intelligent automation.</p>
+            <p>I thrive at the intersection of technology and business, using AI-powered tools like GitHub Copilot to solve real-world problems efficiently and effectively. I believe great work is built iteratively &mdash; one commit at a time.</p>
+        </div>
+    </div>
+</section>
+
+<section id="skills">
+    <h2>Technical Expertise</h2>
+    <div class="divider"></div>
+    <div class="skills-grid">
+        <div class="skill-card">
+            <span class="icon">&#128013;</span>
+            <h3>Python</h3>
+            <p>Data manipulation, automation &amp; scripting</p>
+        </div>
+
+        <div class="skill-card">
+            <span class="icon">&#129302;</span>
+            <h3>Machine Learning</h3>
+            <p>Scikit-learn, model training &amp; evaluation</p>
+        </div>
+
+        <div class="skill-card">
+            <span class="icon">&#128202;</span>
+            <h3>Data Analysis</h3>
+            <p>Pandas, NumPy, statistical analysis</p>
+        </div>
+
+        <div class="skill-card">
+            <span class="icon">&#128200;</span>
+            <h3>Data Visualization</h3>
+            <p>Matplotlib, Seaborn, Plotly</p>
+        </div>
+
+        <div class="skill-card">
+            <span class="icon">&#128451;</span>
+            <h3>SQL</h3>
+            <p>Database querying &amp; data extraction</p>
+        </div>
+
+        <div class="skill-card">
+            <span class="icon">&#129504;</span>
+            <h3>Deep Learning</h3>
+            <p>TensorFlow, neural network architectures</p>
+        </div>
+
+        <div class="skill-card">
+            <span class="icon">&#127775;</span>
+            <h3>AI Tools &amp; Prompting</h3>
+            <p>GitHub Copilot, prompt engineering, LLMs</p>
+        </div>
+
+        <div class="skill-card">
+            <span class="icon">&#9881;</span>
+            <h3>Git &amp; GitHub</h3>
+            <p>Version control, branching &amp; collaboration</p>
+        </div>
+
+        <div class="skill-card">
+            <span class="icon">&#128230;</span>
+            <h3>Docker</h3>
+            <p>Containerization, reproducible environments</p>
+        </div>
+
+        <div class="skill-card">
+            <span class="icon">&#9889;</span>
+            <h3>Hyperautomation</h3>
+            <p>End-to-end process automation with AI</p>
+        </div>
+
+        <div class="skill-card">
+            <span class="icon">&#128218;</span>
+            <h3>RAG Systems</h3>
+            <p>LLM + vector search knowledge systems</p>
+        </div>
+
+        <div class="skill-card">
+            <span class="icon">&#128736;</span>
+            <h3>MLOps</h3>
+            <p>Model deployment, monitoring &amp; CI/CD</p>
+        </div>
+    </div>
+</section>
+
+<!-- Resume Section with download link and spacing -->
+<section id="resume">
+    <h2>Resume</h2>
+    <div class="divider"></div>
+    <div class="resume-block">
+        <a class="resume-download" href="Resume.docx" download>Download Resume (.docx)</a>
+        <h3>Ryan J. Carbone</h3>
+        <p>215-534-7571 | <a href="mailto:ryan.joseph.carbone@gmail.com">ryan.joseph.carbone@gmail.com</a></p>
+
+        <h4>Technical Experience</h4>
+        <div>
+            <strong>Merck &amp; Company, Inc.</strong> — West Point, PA</strong><br>
+            <em>Specialist, Engineering – Merck Manufacturing Division, Biotechnology Manufacturing</em> | 4/2021 – Present</em>
+            <ul>
+                <li>Managed investigations and project timelines while using situationally applicable technical protocol/report documentation in collaboration with the Technology, Quality, and Planning groups to satisfy compliance and customer due dates.</li>
+                <li>Led Quality Risk Assessment/Process Risk Assessment of the Alum Diluent intermediate process for Gardasil®.</li>
+                <li>Performed real-time investigations and root cause failure analysis (RCFA) to evaluate deviation impact to product, quality systems and the validated state of the process within the prescribed five-day timeframe.</li>
+                <li>Provided pivotal support for scheduled production using Company Production System (MPS) tools to implement corrective/preventative actions (CAPAs) and maintain operational compliance with regulatory agencies/initiatives.</li>
+                <li>Trained new deviation management personnel in RCFA.</li>
+                <li>Addressed operational and technical shop floor issues. Solutions were provided in a timely manner to avoid production interruptions and prevent product impact.</li>
+                <li>Assisted in the optimization of a Recombivax HB® intermediate manufacturing process as a component of a continuous improvement project which significantly reduced its process cycle time.</li>
+                <li>Authored changes to production process descriptions (Master Batch Records) and SOPs to reduce occurrences of process deviations for intermediate buffer products used in the manufacture of several liquid vaccines.</li>
+                <li>Managed significant process maintenance, process control (Automation Change Control) and equipment replacement efforts with cooperation from external vendors and contractors.</li>
+            </ul>
+        </div>
+        <div>
+            <strong>Tenhaeff Group – University of Rochester</strong> — Rochester, NY<br>
+            <em>Technical Assistant II – Dr. Wyatt Tenhaeff’s Team</em> | 11/2019 – 6/2020</em>
+            <ul>
+                <li>Developed PLC software in LabVIEW for a polymer generation system and associated instruments.</li>
+                <li>Independently reverse-engineered prior software to generate replacement software.</li>
+                <li>Troubleshot process components interfering with data collection/process control instruments and vice versa.</li>
+                <li>Innovated data collection toggles and simplified program architecture to streamline laboratory workflow.</li>
+                <li>Documented program structure to enable system transferability and make maintenance efforts user-friendly.</li>
+            </ul>
+        </div>
+        <div>
+            <strong>Laboratory for Laser Energetics (LLE) – University of Rochester</strong> — Rochester, NY<br>
+            <em>Assistant Research Engineer – Dr. Kenneth Marshall’s &amp; Brittany Hoffman’s Team</em> | 10/2018 – 6/2020</em>
+            <ul>
+                <li>Designed a pilot-scale sulfuric acid piranha solution sprayer system for a laser grating cleaning process. Complied with stringent safety standards and budget, while doubling the spray diameter of the prior system.</li>
+                <li>Selected and procured appropriate parts to construct the pilot plant within the confines of a fume hood.</li>
+                <li>Directed the experimental design for pilot plant testing to ensure the system met performance benchmarks and the standards set by a multileveled cross-disciplinary team.</li>
+                <li>Co-authored SOPs for system experiments and use of the new system to perform the grating cleaning process.</li>
+                <li>Optimized a polymer curing process which proved that laser grating fabrication, via replication of pre-etched gratings, could be achieved consistently with minimal irregularities for a fraction of the cost.</li>
+            </ul>
+        </div>
+
+        <h4>Academic Project Experience</h4>
+        <div>
+            <strong>LiDestri Food &amp; Drink</strong> — Fairport, NY<br>
+            <em>Senior Design Project – Professor F. Douglas Kelly, Advisor</em> | 1/2020 – 5/2020</em>
+            <ul>
+                <li>Conducted RCFA on a cavitating twin screw pump system and led a continuous improvement effort to increase process speed and reduce pump cavitation for a GMP compliant fluid transport application.</li>
+                <li>Developed hydraulic models for sauce varieties from viscosity, functional bubble point and density data collected at process temperature from a team-built temperature-controlled vacuum chamber.</li>
+                <li>Authored a Python application to compute Net Positive Suction Head (NPSHa) based on tank fill percent and theoretical hydraulic models.</li>
+                <li>Discovered plant design did not account for non-Newtonian nature of fluids processed and pump NPSHa fluctuations during tank drainage. These issues prevented pumps from exceeding a throughput of 100 GPM.</li>
+                <li>Presented zero-cost fluid transport optimization solutions. Recommended use of spare equipment and small personnel workflow changes to stop cavitation and boost process throughput by 20%.</li>
+            </ul>
+        </div>
+
+        <h4>Skills</h4>
+        <ul>
+            <li>Pharmaceutical GxP Software: TrackWise, SAP, DeltaV, GLIMS, TraceLink IMS, PI Vision, ProCal, Veeva Vault QualityDocs, MIDAS, MEDS, MetricStream QRM, IPI system</li>
+            <li>Hazardous Energy Control (HEC) Lockout/Tagout (LOTO) trained for Visual Inspection (VI), Cleaning Verification (CVER) and Cleaning Validation (CVAL) operation support</li>
+            <li>Cleanroom ISO 5/6 class and GMP classified area grade C/D gowning experience</li>
+            <li>Create, edit and read Process and Instrumentation Diagrams (P&amp;ID) and Process Flow Diagrams (PFD)</li>
+            <li>Microsoft Office 365 and G Suite productivity suites, Adobe Acrobat Writer/Reader</li>
+            <li>OSHA compliant chemical, mechanical, electrical, gas and laser safety trained</li>
+            <li>SAChE certifications: The Importance of Process Safety (ELA950), Lab Safety (ELA954)</li>
+            <li>Python: scipy, sympy, pydataset, seaborn, matplotlib, pandas, numpy, math, smtplib, docx2txt, os, xlrd</li>
+            <li>JMP and Minitab Statistical Software</li>
+            <li>LabVIEW 2016/2018/2019. Similar to on-board languages for PLC</li>
+        </ul>
+
+        <h4>Education</h4>
+        <div>
+            <strong>University of Rochester</strong> — Rochester, NY<br>
+            <em>Bachelor of Science in Chemical Engineering, Minor in Studio Art</em> | GPA 3.56/4.00 | May 2020</em>
+            <ul>
+                <li>Hajim School of Engineering Dean’s List (2016 – 2020)</li>
+                <li>Soft Materials Specialization – Organic Chemistry II, Polymer Chemistry, Engineering of Soft Matter</li>
+            </ul>
+        </div>
+    </div>
+</section>
+</section>
+
+<footer id="contact">
+    <p>&copy; 2026 Ryan J. Carbone &nbsp;&middot;&nbsp; Built with GitHub Copilot &nbsp;&middot;&nbsp; Deployed on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
+</footer>
+
+</body>
+</html>
